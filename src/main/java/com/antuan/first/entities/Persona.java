@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "personas")
@@ -36,5 +37,11 @@ public class Persona {
 
     @Column(name = "per_casado", columnDefinition = "BIT")
     private Boolean perCasado;
+
+    @OneToMany(mappedBy = "padre")
+    List<Hijos> hijos;
+
+    @OneToOne(mappedBy = "esposo")
+    private Esposa esposa;
 
 }
